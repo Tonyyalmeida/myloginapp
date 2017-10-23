@@ -1,0 +1,16 @@
+{{#if errors}}
+      {{#each errors}}
+        <div class="alert alert-danger">{{msg}}</div>
+      {{/each}}
+{{/if}}
+<form action="/login" method="post" id="form2">
+    <div class="form-group">
+    <label for="exampleUserName">User Name</label>
+    <input type="username" class="form-control" name="username" id="exampleUserName" placeholder="User Name">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" class="form-control" name="password1" id="exampleInputPassword1" placeholder="Password">
+  </div>
+  <button type="submit" class="btn btn-default">Login</button>
+</form>

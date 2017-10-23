@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>
+{{#if title}}
+{{title}}
+{{else}}
+My Application
+{{/if}}
+    </title>
+    <!-- Bootstrap core CSS -->
+	<link rel="stylesheet" href="/css/bootstrap.css" />
+	<link rel="stylesheet" href="/css/style.css" />
+  </head>
+
+  <body>
+
+    <div class="container">
+      <div class="header clearfix">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+  {{#if homeactive}}
+            <li role="presentation" class="active"><a href="/">Home</a></li>
+         {{else}}
+            <li role="presentation"><a href="/">Home</a></li>
+   {{/if}}
+     {{#if loginactive}}
+            <li role="presentation" class="active"><a href="/login">Login</a></li>
+         {{else}}
+            <li role="presentation"><a href="/login">Login</a></li>
+   {{/if}}
+  {{#if registeractive}}
+            <li role="presentation" class="active"><a href="/register">Registration</a></li>
+         {{else}}
+            <li role="presentation"><a href="/register">Registration</a></li>
+   {{/if}}
+     {{#if aboutactive}}
+            <li role="presentation" class="active"><a href="/about">About</a></li>
+         {{else}}
+            <li role="presentation"><a href="/about">About</a></li>
+   {{/if}}
+          </ul>
+        </nav>
+        <h3 class="text-muted">Project name</h3>
+      </div>
+      <div class="jumbotron">
+        {{{body}}}
+      </div>
+      <footer class="footer">
+        <p>&copy; 2016 Nam Company, Inc.</p>
+      </footer>
+
+    </div> <!-- /container -->
+  </body>
+</html>
