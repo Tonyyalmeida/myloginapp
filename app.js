@@ -43,6 +43,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 // Standard Elements
 app.use(cookieParser());
+    app.use(passport.initialize());
+    app.use(passport.session());
 //validator
 // Express Validator
 //straight from GITHUB
@@ -72,9 +74,9 @@ app.set('view engine', 'handlebars');
 // var users = require('./routes/users');
 
 var UserModel = require('./models/usermodel');
-var UserM = UserModel.UserModel;
+//var UserM = UserModel.UserModel;
 app.use("/all", function (req, res) {
-UserM.find({}, function (err, data) {
+UserModel.find({}, function (err, data) {
 if (err) throw err;
 res.json(data);
 });})
@@ -90,6 +92,10 @@ app.use("/about", about);
 app.use("/", home);
 app.use("/register", register);
 app.use("/login", login);
+app.get("/logout", function (req, res) {
+req.logOut();
+res.redirect("/login");
+})
 
 // app.get("/", function (req, res) {
 // res.render("index", {homeactive: true});    
@@ -105,13 +111,16 @@ app.use("/login", login);
 // app.locals are set forever
 // req.locals only for one request
 // 
-app.use(function (req, res, next) {
-  res.locals.success_msg = req.flash('success_msg');
-  res.locals.error_msg = req.flash('error_msg');
-  res.locals.error = req.flash('error');
-  res.locals.user = req.user || null;
-  next();
-});
+
+
+
+// app.use(function (req, res, next) {
+//   res.locals.success_msg = req.flash('success_msg');
+//   res.locals.error_msg = req.flash('error_msg');
+//   res.locals.error = console.log('error');
+//   res.locals.user = req.user || null;
+//   next();
+// });
 
 // router.get('/', ensureAuthenticated, function(req, res){
 // 	res.render('index');

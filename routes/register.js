@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var UserModel = require('../models/usermodel');
 
+
 router.get("/", function (req, res) {
 res.render("registration", {registeractive: true, title: "Registration"});    
 });
@@ -20,12 +21,11 @@ router.post("/", function (req, res) {
 	req.checkBody('password2', 'Passwords do not match').equals(req.body.password1);
     	var errors = req.validationErrors(); // an array of objects
 	if(errors){
-		res.render("registration", {errors: errors});
+		res.json(errors);
 		}
 	else {
-var UserM = UserModel.UserModel;		
-var newUser = new UserM({
-			email:email,
+var newUser = new UserModel({
+			email: email,
 			username: username,
 			password: password1
 		});
